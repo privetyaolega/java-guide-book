@@ -2,11 +2,11 @@
 <body>
 
 
-Spring Rest Demo
+<h2>TestCRM Rest</h2>
 
 <hr>
 
-<a href="${pageContext.request.contextPath}/test/hello">Hello World RESTTTTT</a>
+<a href="${pageContext.request.contextPath}/api/students">Hello World RESTTTTT</a>
 
 </body>
 </html>
