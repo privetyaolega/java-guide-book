@@ -12,6 +12,7 @@
         <module>java-se</module>
         <module>spring-rest</module>
         <module>spring-mvc-crud</module>
+        <module>spring-boot</module>
     </modules>
 
 

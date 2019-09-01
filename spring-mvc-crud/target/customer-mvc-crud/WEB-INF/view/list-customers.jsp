@@ -26,12 +26,14 @@
     </div>
     <br>
 
-    <div class="row justify-content-lg-center">
+    <input type="button"
+           value="Add Customer"
+           onclick="window.location.href='showFormForAdd'; return false"
+           class="btn btn-secondary btn-lg"/>
 
-        <input type="button"
-               value="Add Customer"
-               onclick="window.location.href='showFormForAdd'; return false"
-               class="btn btn-secondary btn-lg"/>
+    <div class="row justify-content-center">
+
+
 
         <table class="table">
             <thead class="thead-dark">

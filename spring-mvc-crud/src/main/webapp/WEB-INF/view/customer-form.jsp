@@ -16,7 +16,7 @@
 
 <body>
 
-<div class="container justify-content-center">
+<div class="container">
 
     <div class="row justify-content-lg-center">
         <h3>Save Customer</h3>
