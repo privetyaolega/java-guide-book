@@ -14,7 +14,17 @@
         <module>spring-mvc-crud</module>
         <module>spring-boot</module>
         <module>bootstrap</module>
+        <module>selenium-webdriver</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>

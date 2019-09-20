@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Default Suite" verbose="1">
+    <test name="JavaConspect" group-by-instances="true">
+        <classes>
+            <class name="com.eis.conspect.java.testing.testng.factory.TestFactory"/>
+        </classes>
+    </test>
+</suite>

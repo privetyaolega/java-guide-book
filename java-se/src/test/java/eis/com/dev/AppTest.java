@@ -1,8 +1,9 @@
 package eis.com.dev;
 
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.
