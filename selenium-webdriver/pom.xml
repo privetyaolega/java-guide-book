@@ -7,18 +7,15 @@
     <groupId>eis.com.dev</groupId>
     <artifactId>selenium-webdriver</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <name>selenium-webdriver</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <prop.file>default-path</prop.file>
-
+        <prop.file/>
+        <prop.path>src/main/resources/properties</prop.path>
     </properties>
 
     <dependencies>
@@ -48,14 +45,26 @@
                 <executions>
                     <!-- Associate the read-project-properties goal with the initialize phase, to read the properties file. -->
                     <execution>
+                        <id>init</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>read-project-properties</goal>
                         </goals>
                         <configuration>
                             <files>
-                                <file>${prop.file}</file>
+                                <file>${prop.path}/${prop.file}</file>
                             </files>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>props-to-file</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>write-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>${prop.path}/maven.properties</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -105,7 +114,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <prop.file>src/main/resources/properties/my.properties</prop.file>
+                <prop.file>my.properties</prop.file>
             </properties>
         </profile>
 
@@ -115,7 +124,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <prop.file>src/main/resources/properties/test.properties</prop.file>
+                <prop.file>profile-two.properties</prop.file>
             </properties>
         </profile>
 
