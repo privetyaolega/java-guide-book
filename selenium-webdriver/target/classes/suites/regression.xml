@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
-<suite name="Suite 1" verbose="1">
-    <test name="Test Suite">
-        <classes>
-            <class name="eis.com.dev.regression.TestClass1"/>
-        </classes>
-    </test>
-</suite>

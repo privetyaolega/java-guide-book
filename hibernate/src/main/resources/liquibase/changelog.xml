@@ -1,0 +1,112 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="clob.type" value="longtext" dbms="mysql"/>
+
+    <changeSet author="author" id="1">
+        <sql>
+
+            DROP DATABASE IF EXISTS test;
+            CREATE DATABASE test CHARSET = utf8 COLLATE = utf8_general_ci;
+            USE test;
+
+            CREATE TABLE `address`(
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `street` VARCHAR(45) NOT NULL,
+            `appartaments` INT,
+            PRIMARY KEY(`id`)
+            ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+            CREATE TABLE `user` (
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `first_name` varchar(45) DEFAULT NULL,
+            `last_name` varchar(45) DEFAULT NULL,
+            `email` varchar(45) DEFAULT NULL,
+            `address_id` INT,
+            PRIMARY KEY(`id`),
+            KEY `FK_DETAIL_idx` (`address_id`),
+            CONSTRAINT `FK_ADDRESS` FOREIGN KEY(`address_id`) REFERENCES `address`(`id`)
+            ON DELETE NO ACTION ON UPDATE NO ACTION
+            ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+
+
+            CREATE TABLE `car`(
+            `id` INT AUTO_INCREMENT,
+            `model` varchar(100) not null,
+            `price` INT,
+            `owner_id` INT,
+            PRIMARY KEY(`id`),
+            FOREIGN KEY (`owner_id`) REFERENCES `user`(`id`)
+            ) ENGINE=INNODB;
+
+            CREATE TABLE `course`(
+            `id` INT AUTO_INCREMENT,
+            `name` varchar(100) not null,
+            `description` varchar(100) not null,
+            PRIMARY KEY(`id`)
+            ) ENGINE=INNODB;
+
+            CREATE TABLE `user_course`(
+            `user_id` INT NOT NULL,
+            `course_id` INT NOT NULL,
+            CONSTRAINT `Constr_CourseMembership_Student_fk`
+            FOREIGN KEY `user_fk` (`user_id`) REFERENCES `user` (`id`)
+            ON DELETE CASCADE ON UPDATE CASCADE,
+            CONSTRAINT `Constr_CourseMembership_Course_fk`
+            FOREIGN KEY `Course_fk` (`course_id`) REFERENCES `course` (`id`)
+            ON DELETE CASCADE ON UPDATE CASCADE
+            ) ENGINE=INNODB;
+
+
+
+
+            INSERT INTO `course` VALUES
+            (1,'Math','Math Description'),
+            (2,'English','English Description'),
+            (3,'Codding','Codding Description'),
+            (4,'History','History Description'),
+            (5,'Java','Java Description'),
+            (6,'Python','Python Description'),
+            (7,'C#','C# Description');
+
+            INSERT INTO `address` VALUES
+            (1,'Polesskaya','14'),
+            (2,'Chapaeva','1'),
+            (3,'Sovetskaya','32'),
+            (4,'Partizanskaya','2'),
+            (5,'Pyshkina','41'),
+            (6,'Sviridova','11');
+
+            INSERT INTO `user` VALUES
+            (1,'Aleh','Rutski', "arutski@coheren.ru", 1),
+            (2,'John','Smith', "john@tut.by", 3),
+            (3,'Andrey','Morozov', "moroz1231@mail.ru", 2),
+            (4,'Vladimir','Sornikov', "sornk@bk.ru", 5),
+            (5,'Oleg','Nikiforov', "privetya@eisgroup.com", 4),
+            (6,'Maria','Lavrova', "zzz@yandex.ru", 6);
+
+            INSERT INTO `car` VALUES
+            (1,'Tesla', 65000, 1),
+            (2,'Mazda 3', 13000, 1),
+            (3,'Ferari x13', 150000, 1),
+            (4,'Lada x1', 1200, 3),
+            (6,'Honda', 21200, 3),
+            (5,'Mazda cx5', 12200, 5);
+
+            INSERT INTO `user_course` VALUES
+            (1, 2),
+            (1, 5),
+            (2, 2),
+            (2, 3),
+            (4, 1),
+            (5, 5),
+            (3, 1);
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
