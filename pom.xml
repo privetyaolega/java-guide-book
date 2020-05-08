@@ -17,7 +17,6 @@
         <module>selenium-webdriver</module>
         <module>hibernate</module>
         <module>java-ee-servlets</module>
-        <module>telegram-bot</module>
     </modules>
 
     <dependencies>

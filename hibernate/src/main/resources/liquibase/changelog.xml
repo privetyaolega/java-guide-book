@@ -10,7 +10,7 @@
     <changeSet author="author" id="1">
         <sql>
 
-            DROP DATABASE IF EXISTS test;
+            DROP DATABASE IF EXISTS ed-hibernate;
             CREATE DATABASE test CHARSET = utf8 COLLATE = utf8_general_ci;
             USE test;
 
