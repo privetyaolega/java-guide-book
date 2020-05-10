@@ -1,43 +1,41 @@
 package eis.com.dev.models;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @EqualsAndHashCode(of = "id")
 @ToString(includeFieldNames = false)
-@Entity(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
+    long id;
+    String firstName;
+    String lastName;
 
     /* Hibernate annotation
        Определяет тип сохранения данной переменной в базе
        https://docs.jboss.org/hibernate/orm/5.0/mappingGuide/en-US/html/ch03.html */
     @Type(type = "text")
     @Column(name = "email")
-    private String email;
+    String email;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id")
-    private Address address;
+    Address address;
 
     @OneToMany(mappedBy = "user")
-    private List<Car> cars;
+    List<Car> cars;
 
     @ManyToMany
     @JoinTable(
@@ -45,5 +43,5 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
-    private List<Course> courses;
+    List<Course> courses;
 }

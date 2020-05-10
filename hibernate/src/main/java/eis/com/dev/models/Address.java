@@ -1,48 +1,25 @@
 package eis.com.dev.models;
 
-import javax.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
-@Entity(name = "address")
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@Getter
+@Setter
+@EqualsAndHashCode(of = {"id"})
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-
-    private String street;
-    private int appartaments;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public int getAppartaments() {
-        return appartaments;
-    }
-
-    public void setAppartaments(int appartaments) {
-        this.appartaments = appartaments;
-    }
-
-    public Address() {
-
-    }
-
-    public Address(String street, int appartaments) {
-        this.street = street;
-        this.appartaments = appartaments;
-    }
+    int id;
+    int apartments;
+    String street;
 }
