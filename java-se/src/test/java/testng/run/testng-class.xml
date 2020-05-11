@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite 1" verbose="1">
+    <test name="Test Suite">
+        <classes>
+            <class name="com.eis.conspect.java.testing.testng.tests.FirstTestClass"/>
+            <class name="com.eis.conspect.java.testing.testng.tests.SecondTestClass"/>
+        </classes>
+    </test>
+</suite>
