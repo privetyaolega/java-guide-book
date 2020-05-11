@@ -12,6 +12,7 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Car {
 
     @Id
@@ -23,4 +24,9 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     User user;
+
+    public Car(long price, String model) {
+        this.price = price;
+        this.model = model;
+    }
 }
